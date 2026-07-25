@@ -1,6 +1,6 @@
 # Temu Search Kit
 
-A smart search tool for finding quality items on Temu using keyword combinations.
+A smart search tool for finding quality items on e-commerce platforms such as Tmeu and Shein, using keyword combinations.
 
 ## What it does
 
