@@ -2,1279 +2,379 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#0F0F0E">
-<title>Temu Kit — Your smart shopping assistant</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#FAFAF7">
+<meta name="description" content="Copy-ready Temu search terms that find better fabrics, metals and leather. Plus a sizing guide for Nigerian shoppers.">
+<title>Temu Search Kit — search like you know fabrics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script data-goatcounter="https://ucheyy.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <style>
   :root {
-    --bg: #0F0F0E;
-    --surface: #1A1917;
-    --surface-2: #24221F;
-    --surface-3: #2E2C28;
-    --border: #2D2A26;
-    --border-strong: #3D3A34;
-    --ink: #F5F0E6;
-    --ink-dim: #8A8478;
-    --ink-faint: #55524C;
-    --accent: #E8B04B;
-    --accent-strong: #F1BE5F;
-    --accent-dim: #A8813A;
-    --success: #A8D66C;
-    --fire: #FF6B4A;
-    --cool: #7BA9C7;
+    --bg: #FAFAF7;
+    --surface: #FFFFFF;
+    --ink: #141413;
+    --ink-2: #4A4A47;
+    --muted: #8A8A84;
+    --line: #E8E7E2;
+    --line-strong: #D6D5CF;
+    --accent: #E4572E;
+    --accent-soft: #FDEEE8;
+    --ok: #1F8A4C;
+    --radius: 14px;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-  html { background: var(--bg); }
+  html { background: var(--bg); scroll-behavior: smooth; }
 
   body {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
     background: var(--bg);
     color: var(--ink);
-    line-height: 1.5;
-    min-height: 100vh;
-    padding: 20px 12px 120px;
-    max-width: 960px;
-    margin: 0 auto;
     font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* BRAND MARK — small, unobtrusive */
-  .brand-mark {
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 8px; }
+
+  /* TOP BAR */
+  .topbar {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-    margin-bottom: 20px;
-    font-weight: 500;
-  }
-
-  .brand-mark::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    box-shadow: 0 0 8px rgba(232, 176, 75, 0.6);
-  }
-
-  /* COUPON BANNER */
-  .coupon-banner {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: linear-gradient(135deg, rgba(232, 176, 75, 0.18) 0%, rgba(232, 176, 75, 0.05) 100%);
-    border: 1px solid rgba(232, 176, 75, 0.45);
-    border-radius: 14px;
-    padding: 14px 16px;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
-    box-shadow: 0 0 24px rgba(232, 176, 75, 0.06);
-  }
-
-  .coupon-icon { font-size: 20px; line-height: 1; flex-shrink: 0; }
-
-  .coupon-text {
-    flex: 1;
-    min-width: 0;
+    justify-content: space-between;
+    padding: 18px 0 0;
     font-size: 13px;
-    color: var(--ink);
-    line-height: 1.4;
   }
+  .logo { font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px; }
+  .logo-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+  .topbar a { color: var(--ink-2); text-decoration: none; }
+  .topbar a:hover { color: var(--ink); }
 
-  .coupon-text strong { color: var(--accent-strong); font-weight: 600; }
-
-  .coupon-code {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
+  /* HERO */
+  .hero { padding: 40px 0 20px; }
+  h1 {
+    font-size: 30px;
+    line-height: 1.12;
     font-weight: 700;
-    background: var(--surface);
-    border: 1px dashed rgba(232, 176, 75, 0.6);
-    color: var(--accent-strong);
-    padding: 4px 9px;
-    border-radius: 6px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    display: inline-block;
-    margin-left: 2px;
+    letter-spacing: -0.03em;
+    max-width: 16ch;
   }
+  .lede { color: var(--ink-2); margin-top: 10px; max-width: 46ch; }
 
-  .coupon-copy-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 16px;
-    background: var(--accent);
-    color: var(--bg);
-    border: none;
-    border-radius: 8px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    cursor: pointer;
-    transition: background 0.15s ease, transform 0.08s ease;
-    flex-shrink: 0;
-    white-space: nowrap;
+  .search {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bg);
+    padding: 12px 0 10px;
+    box-shadow: 0 10px 12px -14px rgba(20, 20, 19, .35);
   }
-
-  .coupon-copy-btn:hover { background: var(--accent-strong); }
-  .coupon-copy-btn:active { transform: scale(0.96); }
-  .coupon-copy-btn.copied { background: var(--success); }
-
-  /* BIG SEARCH */
-  .search-section {
-    margin-bottom: 32px;
+  .search-box { position: relative; }
+  .search-box svg {
+    position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
+    width: 20px; height: 20px; stroke: var(--muted); pointer-events: none;
   }
-
-  .search-label {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 12px;
-    letter-spacing: -0.015em;
-    line-height: 1.2;
-  }
-
-  .search-wrap {
-    position: relative;
-  }
-
-  .search-icon-big {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    stroke: var(--ink-dim);
-    pointer-events: none;
-    transition: stroke 0.15s ease;
-  }
-
-  .big-search {
+  .search input {
     width: 100%;
-    background: var(--surface);
-    border: 2px solid var(--border);
-    color: var(--ink);
-    padding: 22px 20px 22px 56px;
-    border-radius: 16px;
+    font: inherit;
     font-size: 17px;
-    font-family: inherit;
-    outline: none;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-    -webkit-appearance: none;
     font-weight: 500;
-  }
-
-  .big-search:focus {
-    border-color: var(--accent);
-    background: var(--surface-2);
-    box-shadow: 0 0 0 4px rgba(232, 176, 75, 0.12);
-  }
-
-  .big-search:focus + .search-icon-big,
-  .search-wrap:focus-within .search-icon-big {
-    stroke: var(--accent);
-  }
-
-  .big-search::placeholder { color: var(--ink-faint); font-weight: 400; }
-
-  /* SECTION HEADS */
-  .section-head {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 14px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
     color: var(--ink);
-    letter-spacing: -0.01em;
-  }
-
-  .section-head .head-icon {
-    font-size: 18px;
-    line-height: 1;
-  }
-
-  .section-head .head-tag {
-    margin-left: auto;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: var(--fire);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 4px 8px;
-    background: rgba(255, 107, 74, 0.12);
-    border: 1px solid rgba(255, 107, 74, 0.3);
-    border-radius: 5px;
-    font-weight: 600;
-  }
-
-  .section-head .head-sub {
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    color: var(--ink-dim);
-    font-weight: 400;
-    letter-spacing: 0;
-    margin-left: 4px;
-  }
-
-  /* TRENDING */
-  .trending-section {
-    margin-bottom: 32px;
-    padding: 20px;
-    background: linear-gradient(180deg, rgba(255, 107, 74, 0.08) 0%, rgba(255, 107, 74, 0.02) 100%);
-    border: 1px solid rgba(255, 107, 74, 0.2);
-    border-radius: 16px;
-    max-height: 2000px;
-    opacity: 1;
-    overflow: hidden;
-    transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.3s ease,
-                margin 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-                padding 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-                border-color 0.3s ease;
-  }
-
-  .trending-section.collapsed {
-    max-height: 0;
-    opacity: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    border-color: transparent;
-  }
-
-  .trending-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .trending-card {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 14px 16px;
     background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    transition: border-color 0.15s ease, transform 0.08s ease;
-  }
-
-  .trending-card:hover {
-    border-color: rgba(255, 107, 74, 0.45);
-  }
-
-  .trending-rank {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--fire);
-    min-width: 24px;
-    flex-shrink: 0;
-  }
-
-  .trending-info {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  .trending-text {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    line-height: 1.35;
-    color: var(--ink);
-    font-weight: 500;
-    word-break: break-word;
-  }
-
-  .trending-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: var(--ink-faint);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  .trending-actions {
-    display: flex;
-    gap: 6px;
-    flex-shrink: 0;
-  }
-
-  /* TILES */
-  .tiles-section {
-    margin-bottom: 32px;
-  }
-
-  .tiles-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-
-  .tile {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 14px;
-    background: var(--surface);
-    border: 1.5px solid var(--border);
-    border-radius: 14px;
-    cursor: pointer;
-    font-family: inherit;
-    text-align: left;
-    transition: background 0.15s ease, border-color 0.15s ease, transform 0.08s ease;
-    color: var(--ink);
-    font-weight: 600;
-    font-size: 14px;
-  }
-
-  .tile:hover {
-    border-color: var(--accent-dim);
-    background: var(--surface-2);
-  }
-
-  .tile:active { transform: scale(0.97); }
-
-  .tile.active {
-    background: rgba(232, 176, 75, 0.15);
-    border-color: var(--accent);
-    color: var(--accent-strong);
-  }
-
-  .tile-emoji {
-    font-size: 22px;
-    line-height: 1;
-    flex-shrink: 0;
-  }
-
-  .tile-label {
-    flex: 1;
-    line-height: 1.2;
-  }
-
-  .tile-count {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: var(--ink-faint);
-    font-weight: 500;
-  }
-
-  .tile.active .tile-count {
-    color: var(--accent);
-  }
-
-  /* AUDIENCE TOGGLE */
-  .audience-section {
-    margin-bottom: 24px;
-  }
-
-  .audience-toggle {
-    display: flex;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 4px;
-    gap: 3px;
-  }
-
-  .aud-btn {
-    flex: 1;
-    background: transparent;
-    border: none;
-    color: var(--ink-dim);
-    padding: 12px 12px;
-    border-radius: 9px;
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: color 0.15s ease, background 0.15s ease;
-  }
-
-  .aud-btn.active {
-    background: var(--accent);
-    color: var(--bg);
-  }
-
-  .aud-btn:hover:not(.active) {
-    color: var(--ink);
-    background: var(--surface-2);
-  }
-
-  /* SIZING GUIDE */
-  .sizing-guide {
-    margin-bottom: 32px;
-    border: 1px solid rgba(168, 214, 108, 0.35);
-    border-radius: 14px;
-    overflow: hidden;
-    background: linear-gradient(180deg, rgba(168, 214, 108, 0.08) 0%, rgba(168, 214, 108, 0.02) 100%);
-  }
-
-  .sizing-toggle {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 18px;
-    background: transparent;
-    border: none;
-    color: var(--ink);
-    cursor: pointer;
-    font-family: inherit;
-    text-align: left;
-    transition: background 0.15s ease;
-  }
-
-  .sizing-toggle:hover { background: rgba(168, 214, 108, 0.08); }
-
-  .sizing-icon { font-size: 18px; line-height: 1; }
-
-  .sizing-title {
-    flex: 1;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--ink);
-  }
-
-  .sizing-title-sub {
-    display: block;
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    color: var(--ink-dim);
-    margin-top: 2px;
-    letter-spacing: 0;
-  }
-
-  .sizing-chevron {
-    color: var(--success);
-    font-size: 11px;
-    transition: transform 0.25s ease;
-    display: inline-block;
-    font-weight: 700;
-  }
-
-  .sizing-guide.expanded .sizing-chevron { transform: rotate(180deg); }
-
-  .sizing-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease;
-  }
-
-  .sizing-guide.expanded .sizing-content { max-height: 1400px; }
-
-  .sizing-list {
-    padding: 4px 22px 22px;
-    margin: 0;
-    color: var(--ink-dim);
-    font-size: 13px;
-    line-height: 1.65;
-    list-style: none;
-    counter-reset: sizing-counter;
-  }
-
-  .sizing-list li {
-    margin-bottom: 16px;
-    padding-left: 32px;
-    position: relative;
-    counter-increment: sizing-counter;
-  }
-
-  .sizing-list li:last-child { margin-bottom: 0; }
-
-  .sizing-list li::before {
-    content: counter(sizing-counter, decimal-leading-zero);
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-family: 'JetBrains Mono', monospace;
-    color: var(--success);
-    font-weight: 700;
-    font-size: 12px;
-  }
-
-  .sizing-list strong {
-    color: var(--ink);
-    font-weight: 600;
-    display: block;
-    margin-bottom: 2px;
-  }
-
-  /* STICKY COMPACT BAR */
-  .sticky-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 20;
-    background: rgba(15, 15, 14, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 10px 16px;
-    transform: translateY(-100%);
-    transition: transform 0.25s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: nowrap;
-  }
-
-  .sticky-bar.visible {
-    transform: translateY(0);
-  }
-
-  .sticky-search {
-    flex: 1;
-    min-width: 0;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--ink);
-    padding: 10px 14px 10px 38px;
-    border-radius: 10px;
-    font-size: 14px;
-    font-family: inherit;
+    border: 1.5px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 14px 48px 14px 50px;
     outline: none;
     -webkit-appearance: none;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238A8478' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='8'/><path d='m21 21-4.35-4.35'/></svg>");
-    background-repeat: no-repeat;
-    background-position: 12px center;
+    transition: border-color .15s ease, box-shadow .15s ease;
   }
-
-  .sticky-search:focus {
-    border-color: var(--accent-dim);
+  .search input::placeholder { color: var(--muted); font-weight: 400; }
+  .search input:focus { border-color: var(--ink); box-shadow: 0 0 0 4px rgba(20,20,19,.06); }
+  .search input::-webkit-search-cancel-button { display: none; }
+  .clear-btn {
+    position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+    width: 36px; height: 36px; border-radius: 50%;
+    display: none; align-items: center; justify-content: center;
+    color: var(--muted);
   }
+  .clear-btn.visible { display: flex; }
+  .clear-btn:hover { background: var(--bg); color: var(--ink); }
 
-  .sticky-audience {
+  /* PILLS */
+  .pills {
     display: flex;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 2px;
-    gap: 1px;
-    flex-shrink: 0;
-  }
-
-  .sticky-audience .aud-btn {
-    padding: 7px 10px;
-    font-size: 11px;
-    border-radius: 8px;
-  }
-
-  .sticky-filter-pill {
-    display: none;
-    align-items: center;
     gap: 6px;
-    padding: 8px 12px;
-    background: rgba(232, 176, 75, 0.15);
-    border: 1px solid var(--accent);
-    color: var(--accent-strong);
-    border-radius: 10px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    cursor: pointer;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin: 12px -16px 0;
+    padding: 0 16px 2px;
+  }
+  .pills::-webkit-scrollbar { display: none; }
+  .pill {
     flex-shrink: 0;
-    white-space: nowrap;
-  }
-
-  .sticky-filter-pill.visible { display: inline-flex; }
-  .sticky-filter-pill:hover { background: rgba(232, 176, 75, 0.25); }
-
-  .sticky-filter-pill::after {
-    content: '×';
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    margin-left: 2px;
-  }
-
-  /* FAVORITES */
-  .favorites {
-    margin: 24px 0 32px;
-    padding: 20px;
-    background: linear-gradient(180deg, rgba(232, 176, 75, 0.08) 0%, rgba(232, 176, 75, 0.02) 100%);
-    border: 1px solid rgba(232, 176, 75, 0.3);
-    border-radius: 16px;
-    display: none;
-    scroll-margin-top: 100px;
-  }
-
-  .favorites.has-items { display: block; }
-
-  .fav-head {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 14px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--accent-strong);
-  }
-
-  .fav-head svg { width: 16px; height: 16px; fill: var(--accent); }
-
-  .fav-head-count {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--accent-dim);
-    margin-left: auto;
-  }
-
-  .fav-list { display: flex; flex-direction: column; gap: 8px; }
-
-  /* FILTER STATUS INDICATOR */
-  .filter-status {
-    display: none;
-    margin: 20px 0 12px;
-    padding: 12px 16px;
-    background: rgba(232, 176, 75, 0.08);
-    border: 1px solid rgba(232, 176, 75, 0.3);
-    border-radius: 10px;
-    font-size: 13px;
-    color: var(--ink);
-    align-items: center;
-    gap: 10px;
-  }
-
-  .filter-status.visible { display: flex; }
-
-  .filter-status-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: var(--accent);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-
-  .filter-status-value {
-    font-weight: 600;
-    color: var(--ink);
-  }
-
-  .filter-status-clear {
-    margin-left: auto;
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--ink-dim);
-    padding: 5px 10px;
-    border-radius: 6px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-
-  .filter-status-clear:hover {
-    color: var(--ink);
-    border-color: var(--ink-dim);
-  }
-
-  /* COLLECTION HEADERS */
-  #content { display: flex; flex-direction: column; }
-
-  .collection-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 40px 0 8px;
-    padding: 0 4px;
-  }
-
-  .collection-header .collection-name {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-
-  .collection-header .collection-rule {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, var(--accent-dim), transparent);
-    opacity: 0.5;
-  }
-
-  .collection-header[data-empty="true"] { display: none; }
-
-  /* CATEGORY */
-  .category {
-    margin-top: 20px;
-    scroll-margin-top: 100px;
-  }
-
-  .category[data-hidden="true"] {
-    display: none;
-  }
-
-  .cat-head {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-    padding: 14px 18px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
     background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    flex-wrap: wrap;
-  }
-
-  .cat-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    color: var(--accent);
-    letter-spacing: 0.04em;
-    font-weight: 700;
-  }
-
-  .cat-name {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: -0.015em;
-    line-height: 1.2;
-  }
-
-  .cat-audience {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: var(--ink-faint);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 3px 7px;
-    background: var(--bg);
-    border-radius: 5px;
-    border: 1px solid var(--border);
-  }
-
-  .cat-count {
-    margin-left: auto;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--ink-faint);
-  }
-
-  .cat-note {
-    color: var(--ink-dim);
-    font-size: 13px;
-    line-height: 1.5;
-    margin-bottom: 10px;
-    max-width: 560px;
-    padding: 0 4px;
-  }
-
-  .cat-sizing-tip {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 13px;
-    color: var(--ink);
-    background: rgba(168, 214, 108, 0.10);
-    border: 1px solid rgba(168, 214, 108, 0.4);
-    padding: 12px 14px;
-    border-radius: 10px;
-    margin-bottom: 14px;
-    line-height: 1.5;
-  }
-
-  .cat-sizing-tip::before {
-    content: '📏';
-    font-size: 15px;
-    line-height: 1.35;
-    flex-shrink: 0;
-  }
-
-  .cat-sizing-tip .tip-inner { flex: 1; }
-
-  .cat-sizing-tip .tip-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: var(--success);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-weight: 700;
-    margin-bottom: 3px;
-    display: block;
-  }
-
-  .cat-sizing-tip strong {
-    color: var(--ink);
-    font-weight: 600;
-  }
-
-  /* CHIPS */
-  .chips { display: flex; flex-direction: column; gap: 8px; }
-
-  .chip {
-    display: flex;
-    align-items: center;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 10px 12px;
-    gap: 10px;
-    transition: border-color 0.15s ease, background 0.15s ease;
-  }
-
-  .chip:hover { border-color: rgba(232, 176, 75, 0.25); }
-
-  .chip.copied {
-    border-color: var(--success);
-    background: rgba(168, 214, 108, 0.08);
-  }
-
-  .chip.copied .chip-text { color: var(--success); }
-  .chip[hidden] {
-    display: none;
-  }
-
-  .chip-fav {
-    background: transparent;
-    border: none;
-    color: var(--ink-faint);
-    cursor: pointer;
-    padding: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.15s ease, transform 0.15s ease;
-    font-family: inherit;
-    flex-shrink: 0;
-    border-radius: 6px;
-  }
-
-  .chip-fav svg {
-    width: 17px;
-    height: 17px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    transition: fill 0.15s ease, stroke 0.15s ease;
-  }
-
-  .chip-fav:hover { color: var(--accent); background: rgba(232, 176, 75, 0.08); }
-  .chip-fav.on { color: var(--accent); }
-  .chip-fav.on svg { fill: var(--accent); stroke: var(--accent); }
-  .chip-fav:active { transform: scale(0.88); }
-
-  .chip-info {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  .chip-text {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    line-height: 1.35;
-    color: var(--ink);
-    word-break: break-word;
-  }
-
-  .chip-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: var(--ink-faint);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .chip-actions { display: flex; gap: 6px; flex-shrink: 0; }
-
-  .chip-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.15s ease, border-color 0.15s ease, transform 0.08s ease;
-    border: 1px solid transparent;
-    min-height: 34px;
-    white-space: nowrap;
-  }
-
-  .chip-copy-btn {
-    background: rgba(168, 214, 108, 0.10);
-    color: var(--success);
-    border-color: rgba(168, 214, 108, 0.35);
-  }
-
-  .chip-copy-btn:hover {
-    background: rgba(168, 214, 108, 0.20);
-    border-color: rgba(168, 214, 108, 0.65);
-  }
-
-  .chip-copy-btn:active {
-    background: rgba(168, 214, 108, 0.30);
-    transform: scale(0.96);
-  }
-
-  .chip-shop-btn {
-    background: rgba(232, 176, 75, 0.14);
-    color: var(--accent-strong);
-    border-color: rgba(232, 176, 75, 0.45);
-  }
-
-  .chip-shop-btn:hover {
-    background: rgba(232, 176, 75, 0.26);
-    border-color: rgba(232, 176, 75, 0.75);
-  }
-
-  .chip-shop-btn:active {
-    background: rgba(232, 176, 75, 0.36);
-    transform: scale(0.96);
-  }
-
-  .chip-shop-btn svg {
-    width: 11px;
-    height: 11px;
-    stroke: currentColor;
-  }
-
-  .empty-state {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--ink-dim);
     font-size: 14px;
-    display: none;
+    font-weight: 500;
+    color: var(--ink-2);
+    white-space: nowrap;
+    transition: background .15s ease, color .15s ease, border-color .15s ease;
   }
+  .pill:hover { border-color: var(--ink); color: var(--ink); }
+  .pill.active { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .pill .n { opacity: .55; margin-left: 4px; font-weight: 400; }
+  .pill[hidden] { display: none; }
 
-  .empty-state.visible { display: block; }
-
-  .footnote {
-    margin-top: 60px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
-    font-size: 12px;
-    color: var(--ink-dim);
-    line-height: 1.6;
-  }
-
-  .footnote strong { color: var(--ink); font-weight: 600; }
-
-  .credit {
-    margin-top: 24px;
-    padding-top: 16px;
-    border-top: 1px dashed var(--border);
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.04em;
-    color: var(--ink-faint);
-  }
-
-  .credit-line {
+  /* COUPON */
+  .coupon {
     display: flex;
     align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .credit a { color: var(--accent); text-decoration: none; font-weight: 500; }
-  .credit a:hover { text-decoration: underline; }
-
-  .disclosure {
+    gap: 10px;
     margin-top: 8px;
-    font-size: 10px;
-    color: var(--ink-faint);
-    font-style: italic;
-    line-height: 1.5;
-    font-family: 'Inter', sans-serif;
-    letter-spacing: 0;
+    font-size: 13px;
+    color: var(--ink-2);
   }
-
-  .toast {
-    position: fixed;
-    bottom: 32px;
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    background: var(--ink);
-    color: var(--bg);
-    padding: 14px 22px;
-    border-radius: 12px;
+  .coupon b { color: var(--ink); font-weight: 600; }
+  .code {
+    font-weight: 600;
+    letter-spacing: .04em;
+    color: var(--accent);
+    border-bottom: 1.5px dashed currentColor;
+  }
+  .coupon button {
+    margin-left: auto;
     font-size: 13px;
     font-weight: 600;
-    font-family: 'JetBrains Mono', monospace;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-    z-index: 100;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+    color: var(--ink);
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .coupon button.copied { color: var(--ok); border-color: var(--ok); }
+
+  /* LIST */
+  main { padding-bottom: 40px; }
+  .group { margin-top: 36px; scroll-margin-top: 140px; }
+  .group[hidden] { display: none; }
+  .group-head { display: flex; align-items: baseline; gap: 8px; }
+  .group-head h2 { font-size: 19px; font-weight: 700; letter-spacing: -0.02em; }
+  .badge {
+    font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--ink-2); background: var(--line); padding: 2px 7px; border-radius: 999px;
+  }
+  .group-head .count { margin-left: auto; font-size: 13px; color: var(--muted); }
+  .note { color: var(--ink-2); font-size: 14px; margin-top: 4px; max-width: 60ch; }
+  .tip { font-size: 13px; color: var(--ink-2); margin-top: 6px; }
+  .tip::before { content: 'Sizing  '; font-weight: 600; color: var(--accent); white-space: pre; }
+  .tip strong { color: var(--ink); font-weight: 600; }
+
+  .rows {
+    margin-top: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .row {
     display: flex;
     align-items: center;
-    gap: 8px;
-    max-width: 90%;
+    gap: 4px;
+    padding: 10px 8px 10px 14px;
+    border-top: 1px solid var(--line);
+    transition: background .2s ease;
   }
+  .row:first-child { border-top: 0; }
+  .row[hidden] { display: none; }
+  .row.copied { background: #EEF7F1; }
+  .rank { font-size: 13px; font-weight: 600; color: var(--accent); width: 16px; flex-shrink: 0; }
+  .row-text { flex: 1; min-width: 0; padding-right: 6px; }
+  .term { font-weight: 500; line-height: 1.35; word-break: break-word; }
+  .tag { font-size: 12px; color: var(--muted); margin-top: 1px; }
 
-  .toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
-  .toast svg { flex-shrink: 0; }
-
-  .toast-text {
-    max-width: 280px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  .icon-btn {
+    width: 34px; height: 34px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    color: var(--muted);
+    transition: background .15s ease, color .15s ease, transform .1s ease;
   }
+  .icon-btn:hover { background: var(--bg); color: var(--ink); }
+  .icon-btn:active { transform: scale(.9); }
+  .icon-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .fav.on { color: var(--accent); }
+  .fav.on svg { fill: var(--accent); }
+  .fav.pop svg { animation: pop .4s ease; }
+  .copy.done { color: var(--ok); }
 
-  /* ========== ANIMATIONS ========== */
-
-  @keyframes sectionFadeIn {
-    from { opacity: 0; transform: translateY(14px); }
-    to { opacity: 1; transform: translateY(0); }
+  .shop {
+    flex-shrink: 0;
+    display: inline-flex; align-items: center; gap: 4px;
+    margin-left: 2px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: var(--ink);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background .15s ease, transform .1s ease;
   }
+  .shop:hover { background: var(--accent); }
+  .shop:active { transform: scale(.95); }
+  .shop svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
 
-  .brand-mark,
-  .coupon-banner,
-  .search-section,
-  .trending-section,
-  .tiles-section,
-  .audience-section,
-  .sizing-guide,
-  #content {
-    animation: sectionFadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  .empty { display: none; text-align: center; padding: 56px 8px 8px; color: var(--ink-2); }
+  .empty.visible { display: block; }
+  .empty p + p { margin-top: 6px; font-size: 14px; color: var(--muted); }
+  .empty .shop { margin-top: 18px; padding: 12px 18px; }
+  .suggest { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 16px; }
+
+  /* BEFORE YOU BUY */
+  .guide { margin-top: 56px; scroll-margin-top: 20px; }
+  .guide > h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
+  .guide > p { color: var(--ink-2); margin-top: 4px; font-size: 14px; }
+  details {
+    margin-top: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
   }
-
-  .brand-mark { animation-delay: 0.02s; }
-  .coupon-banner { animation-delay: 0.06s; }
-  .search-section { animation-delay: 0.1s; }
-  .trending-section { animation-delay: 0.14s; }
-  .tiles-section { animation-delay: 0.18s; }
-  .audience-section { animation-delay: 0.22s; }
-  .sizing-guide { animation-delay: 0.26s; }
-  #content { animation-delay: 0.3s; }
-
-  @keyframes catRevealed {
-    from { opacity: 0; transform: translateY(6px); }
-    to { opacity: 1; transform: translateY(0); }
+  summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 16px;
+    font-weight: 600;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
   }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--muted); line-height: 1; }
+  details[open] summary::after { content: '−'; }
+  .rules { list-style: none; counter-reset: r; padding: 0 16px 16px; }
+  .rules li { counter-increment: r; position: relative; padding-left: 30px; margin-top: 14px; font-size: 14px; color: var(--ink-2); }
+  .rules li:first-child { margin-top: 0; }
+  .rules li::before { content: counter(r); position: absolute; left: 0; top: 0; font-weight: 700; color: var(--accent); }
+  .rules strong { display: block; color: var(--ink); font-weight: 600; }
 
-  .category.just-revealed {
-    animation: catRevealed 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  footer { margin-top: 48px; padding: 24px 0 48px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+  footer p + p { margin-top: 6px; }
+  footer a { color: var(--ink-2); text-decoration: underline; text-underline-offset: 2px; }
+  footer .small { font-size: 12px; margin-top: 14px; }
+
+  /* TOAST */
+  .toast {
+    position: fixed; left: 50%; bottom: 24px;
+    transform: translate(-50%, 16px);
+    max-width: calc(100% - 32px);
+    background: var(--ink); color: #fff;
+    padding: 12px 18px; border-radius: 999px;
+    font-size: 14px; font-weight: 500;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    opacity: 0; pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+    z-index: 50;
   }
+  .toast.visible { opacity: 1; transform: translate(-50%, 0); }
 
-  @keyframes heartBurst {
-    0% { transform: scale(1); }
-    30% { transform: scale(1.4); }
-    55% { transform: scale(0.92); }
-    75% { transform: scale(1.08); }
-    100% { transform: scale(1); }
-  }
+  @keyframes pop { 0% { transform: scale(1); } 40% { transform: scale(1.35); } 100% { transform: scale(1); } }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .hero, .search, main { animation: rise .5s ease backwards; }
+  .search { animation-delay: .06s; }
+  main { animation-delay: .12s; }
 
-  .chip-fav.just-favorited svg {
-    animation: heartBurst 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  @keyframes copyGlow {
-    0% {
-      box-shadow: 0 0 0 0 rgba(168, 214, 108, 0.5);
-      transform: scale(1);
-    }
-    30% {
-      transform: scale(1.005);
-    }
-    100% {
-      box-shadow: 0 0 0 14px rgba(168, 214, 108, 0);
-      transform: scale(1);
-    }
-  }
-
-  .chip.copied,
-  .trending-card.copied {
-    animation: copyGlow 0.7s ease-out;
-  }
-
-  @keyframes tilePulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(0.96); }
-    100% { transform: scale(1); }
-  }
-
-  .tile.active {
-    animation: tilePulse 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 24px rgba(232, 176, 75, 0.18);
-  }
-
-  @keyframes toastBounce {
-    0% { transform: translateX(-50%) translateY(28px); opacity: 0; }
-    60% { transform: translateX(-50%) translateY(-4px); opacity: 1; }
-    100% { transform: translateX(-50%) translateY(0); opacity: 1; }
-  }
-
-  .toast.visible {
-    animation: toastBounce 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-
-  /* Smoother button feedback */
-  .chip-btn:active { transform: scale(0.94); }
-  .coupon-copy-btn:active { transform: scale(0.95); }
-
-  /* Reduced motion respect */
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.15s !important;
-      scroll-behavior: auto !important;
-    }
+    *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
   }
-
-  /* ========== END ANIMATIONS ========== */
 
   @media (min-width: 640px) {
-    body { padding: 32px 20px 120px; font-size: 16px; }
-    .search-label { font-size: 28px; }
-    .big-search { font-size: 18px; padding: 24px 20px 24px 60px; }
-    .chip-text { font-size: 14px; }
-    .cat-name { font-size: 26px; }
-    .tiles-grid { grid-template-columns: repeat(4, 1fr); }
+    .hero { padding-top: 64px; }
+    .row { padding: 12px 12px 12px 18px; }
+    .pills { flex-wrap: wrap; overflow: visible; margin: 12px 0 0; padding: 0; }
+    .icon-btn { width: 38px; height: 38px; }
+    .shop { padding: 9px 16px; font-size: 14px; }
+    h1 { font-size: 44px; }
+    .lede { font-size: 17px; }
   }
 </style>
 </head>
 <body>
 
-<div class="brand-mark">Your smart shopping assistant</div>
+<div class="wrap">
+  <header class="topbar">
+    <span class="logo"><span class="logo-dot"></span>Temu Search Kit</span>
+    <a href="#guide" id="guideLink">Sizing guide</a>
+  </header>
 
-<div class="coupon-banner" role="region" aria-label="Discount code">
-  <span class="coupon-icon">🎁</span>
-  <span class="coupon-text">
-    <strong>30% off</strong> your first Temu order with code
-    <span class="coupon-code">ald753977</span>
-  </span>
-  <button class="coupon-copy-btn" id="couponCopyBtn" aria-label="Copy discount code">Copy code</button>
-</div>
+  <section class="hero">
+    <h1>Search Temu like you know fabrics.</h1>
+    <p class="lede">Precise search terms that surface better cotton, leather and metals. Copy one, or tap Shop to open it on Temu.</p>
+  </section>
 
-<section class="search-section" id="searchSection">
-  <label class="search-label" for="mainSearch">What are you shopping for today?</label>
-  <div class="search-wrap">
-    <svg class="search-icon-big" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <input type="search" class="big-search" id="mainSearch" placeholder="e.g. hoodie, chain, kids clothes, corporate wear..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-  </div>
-</section>
-
-<section class="trending-section" id="trendingSection" aria-label="Trending searches">
-  <div class="section-head">
-    <span class="head-icon">🔥</span>
-    <span>Trending this week</span>
-  </div>
-  <div class="trending-list" id="trendingList"></div>
-</section>
-
-<section class="tiles-section" id="tilesSection" aria-label="Browse by category">
-  <div class="section-head">
-    <span class="head-icon">🎯</span>
-    <span>Browse by vibe</span>
-    <span class="head-sub">tap to filter</span>
-  </div>
-  <div class="tiles-grid" id="tilesGrid"></div>
-</section>
-
-<section class="audience-section">
-  <div class="audience-toggle" role="group" aria-label="Filter by audience">
-    <button class="aud-btn active" data-audience="all" aria-pressed="true">All</button>
-    <button class="aud-btn" data-audience="men" aria-pressed="false">Men</button>
-    <button class="aud-btn" data-audience="women" aria-pressed="false">Women</button>
-  </div>
-</section>
-
-<section class="sizing-guide" id="sizingGuide">
-  <button class="sizing-toggle" id="sizingToggle" aria-expanded="false">
-    <span class="sizing-icon">📏</span>
-    <span class="sizing-title">Nigerian sizing survival guide<span class="sizing-title-sub">6 rules for shopping without the size trap</span></span>
-    <span class="sizing-chevron">▼</span>
-  </button>
-  <div class="sizing-content">
-    <ol class="sizing-list">
-      <li><strong>Measure in CM, not letters.</strong>Get a tape. Bust, waist, hip, foot length. Match your numbers to the CM column in the size chart. Ignore what letter sits next to it.</li>
-      <li><strong>Asian sizes ≠ US/UK sizes.</strong>Asian XL ≈ US/UK M or L. When Temu offers "Standard/UK" as an option, pick that. If Asian is the only choice, size up one or two letters.</li>
-      <li><strong>0% stretch = size up.</strong>Cotton, linen, and canvas don't give. Elastane, spandex, and viscose do. If a jean is 100% cotton with no stretch, go one size bigger.</li>
-      <li><strong>100% cotton shrinks 3-5% on first wash.</strong>Wash cold, hang dry to minimize shrinkage. Or buy one size larger than you measured.</li>
-      <li><strong>Trust customer photos, not written reviews.</strong>"100% of customers say true to size" is marketing. Real photos on real bodies tell the truth. Look for Nigerian buyers if possible.</li>
-      <li><strong>Nigerian bodies run curvier at hip and thigh</strong>than Asian sizing assumes. Especially for jeans and fitted trousers. Look for stretch fabric or size up.</li>
-    </ol>
-  </div>
-</section>
-
-<section class="favorites" id="favorites" aria-label="Your favorites">
-  <div class="fav-head">
-    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-    <span>Your favorites</span>
-    <span class="fav-head-count" id="favCount"></span>
-  </div>
-  <div class="fav-list" id="favList"></div>
-</section>
-
-<div class="empty-state" id="emptyState">No matches. Try a different word or clear the filter.</div>
-
-<main id="content"></main>
-
-<div class="footnote">
-  <p><strong>Reality check.</strong> Keywords narrow the pool, they don't verify quality. Sellers stuff titles with terms the product doesn't actually meet. Always cross-check: read the composition tab, sort by <em>most orders</em> not cheapest, scan the 1-star reviews first, look at customer photos not stock shots.</p>
-  <p style="margin-top: 12px;"><strong>Watch for false labels.</strong> "Genuine leather" and "925 sterling silver" at Temu prices are frequently mislabeled. Real 925 has a floor cost. Treat these as directional signals, not proof.</p>
-  <div class="credit">
-    <div class="credit-line">
-      <span>Built by</span>
-      <a href="https://x.com/ucheedwin20" target="_blank" rel="noopener">@ucheedwin20</a>
+  <div class="search">
+    <div class="search-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" id="mainSearch" placeholder="Try hoodie, chain, kids, office…" aria-label="Search terms" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+      <button class="clear-btn" id="clearBtn" aria-label="Clear search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="position:static;transform:none;stroke:currentColor"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
     </div>
-    <div class="credit-line">
-      <span>Inspired by</span>
-      <a href="https://x.com/TechnicalBben" target="_blank" rel="noopener">@TechnicalBben</a>
-      <span>with wisdom from</span>
-      <a href="https://x.com/KaeAnonymous_" target="_blank" rel="noopener">@KaeAnonymous_</a>
-      <span>and the Nigerian shopping community.</span>
-    </div>
-    <div class="disclosure">Some links may earn a small commission when you shop on Temu. This helps keep the tool free.</div>
+    <nav class="pills" id="pills" aria-label="Filter by category"></nav>
   </div>
+
+  <div class="coupon" role="region" aria-label="Discount code">
+    <span><b>30% off</b> your first Temu order · <span class="code">ald753977</span></span>
+    <button id="couponCopyBtn" aria-label="Copy discount code">Copy code</button>
+  </div>
+
+  <main>
+    <section class="group" id="trending" aria-label="Popular this week">
+      <div class="group-head"><h2>Popular this week</h2></div>
+      <div class="rows" id="trendingList"></div>
+    </section>
+    <div id="content"></div>
+    <div class="empty" id="emptyState"></div>
+  </main>
+
+  <section class="guide" id="guide">
+    <h2>Before you buy</h2>
+    <p>Good keywords narrow the pool. These checks keep you out of the size trap and away from fake labels.</p>
+    <details id="sizingGuide">
+      <summary>Nigerian sizing: 6 rules</summary>
+      <ol class="rules">
+        <li><strong>Measure in CM, not letters.</strong>Get a tape. Bust, waist, hip, foot length. Match your numbers to the CM column in the size chart. Ignore what letter sits next to it.</li>
+        <li><strong>Asian sizes ≠ US/UK sizes.</strong>Asian XL ≈ US/UK M or L. When Temu offers "Standard/UK" as an option, pick that. If Asian is the only choice, size up one or two letters.</li>
+        <li><strong>0% stretch = size up.</strong>Cotton, linen, and canvas don't give. Elastane, spandex, and viscose do. If a jean is 100% cotton with no stretch, go one size bigger.</li>
+        <li><strong>100% cotton shrinks 3-5% on first wash.</strong>Wash cold, hang dry to minimize shrinkage. Or buy one size larger than you measured.</li>
+        <li><strong>Trust customer photos, not written reviews.</strong>"100% of customers say true to size" is marketing. Real photos on real bodies tell the truth. Look for Nigerian buyers if possible.</li>
+        <li><strong>Nigerian bodies run curvier at hip and thigh</strong>than Asian sizing assumes. Especially for jeans and fitted trousers. Look for stretch fabric or size up.</li>
+      </ol>
+    </details>
+    <details>
+      <summary>Check every listing</summary>
+      <ol class="rules">
+        <li><strong>Read the composition tab.</strong>Sellers stuff titles with terms the product doesn't meet. The fabric breakdown is what counts.</li>
+        <li><strong>Sort by most orders, not cheapest.</strong>Volume means more real reviews to judge from.</li>
+        <li><strong>Read the 1-star reviews first.</strong>They tell you how it actually fails.</li>
+        <li><strong>Look at customer photos, not stock shots.</strong>"Genuine leather" and "925 sterling silver" at Temu prices are often mislabeled. Treat them as signals, not proof.</li>
+      </ol>
+    </details>
+  </section>
+
+  <footer>
+    <p>Built by <a href="https://x.com/ucheedwin20" target="_blank" rel="noopener">@ucheedwin20</a>.</p>
+    <p>Inspired by <a href="https://x.com/TechnicalBben" target="_blank" rel="noopener">@TechnicalBben</a> with wisdom from <a href="https://x.com/KaeAnonymous_" target="_blank" rel="noopener">@KaeAnonymous_</a> and the Nigerian shopping community.</p>
+    <p class="small">Some links may earn a small commission when you shop on Temu. This helps keep the tool free.</p>
+  </footer>
 </div>
 
-<div class="toast" id="toast">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-  <span class="toast-text" id="toastText">Copied</span>
-</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
   const TEMU_AFF_ID = '';
@@ -1298,7 +398,6 @@
     return url;
   }
 
-  // Collections with emojis
   const COLLECTIONS = [
     { name: 'Casual', emoji: '👕' },
     { name: 'Corporate', emoji: '👔' },
@@ -1603,490 +702,395 @@
     }
   ];
 
-  const FAV_KEY = 'temu-kit-favorites-v1';
-  const AUDIENCE_KEY = 'temu-kit-audience-v1';
-  const SIZING_KEY = 'temu-kit-sizing-expanded-v1';
-  const HEART_SVG = '<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';
-  const SHOP_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>';
 
+  const FAV_KEY = 'temu-kit-favorites-v1';
+  const SIZING_KEY = 'temu-kit-sizing-expanded-v1';
+  const ICONS = {
+    heart: '<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+    copy: '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg>',
+    check: '<svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>',
+    arrow: '<svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg>'
+  };
+
+  // ---------- SEARCH ----------
+  // Deterministic matching: every word you type must prefix-match a word in the
+  // term, its tag, its category or its collection. Synonyms widen a word;
+  // filler words ("clothes", "for") are dropped. A synonym starting with "="
+  // must match a whole word ("=ring" finds rings, not ring-spun cotton).
+  const STOPWORDS = new Set(['a', 'an', 'the', 'and', 'for', 'of', 'with', 'in', 'to', 'my',
+    'clothes', 'clothing', 'wear', 'outfit', 'outfits', 'item', 'items', 'stuff', 'things',
+    'good', 'best', 'quality', 'nice', 'cheap', 'original', 'real']);
+
+  const SYNONYMS = {
+    kid: ['children', 'child', 'baby'], kids: ['children', 'child', 'baby'], child: ['kid', 'baby'], children: ['kid', 'baby'], baby: ['kid', 'children'],
+    office: ['corporate'], work: ['corporate', 'workwear'], formal: ['corporate', 'formal'],
+    gym: ['active', 'sports', 'training', 'compression'], sport: ['active', 'sports'], workout: ['active', 'training'], running: ['active', 'running'],
+    shoe: ['footwear', 'shoes', 'sneakers', 'loafers'], footwear: ['shoes'], trainer: ['sneakers'], sandal: ['slippers'], slide: ['slippers'], palm: ['slippers'],
+    tshirt: ['tee'], tee: ['tshirt'], top: ['tops', 'tee', 'tshirt'],
+    trouser: ['pants', 'chinos'], pant: ['trousers', 'chinos', 'sweatpants'],
+    jean: ['denim'], denim: ['jeans'],
+    hoodie: ['hoodie', 'sweatshirt'], sweatshirt: ['hoodie'], jumper: ['sweater'],
+    jewelry: ['chain', 'necklace', 'earrings', '=ring', '=rings'], jewellery: ['chain', 'necklace', 'earrings', '=ring', '=rings'], ring: ['=ring', '=rings'],
+    necklace: ['chain'], chain: ['necklace'], earring: ['earrings', 'studs', 'hoop'],
+    watch: ['wristwatches', 'watch'], perfume: ['perfumes', 'edp', 'oud', 'musk'], fragrance: ['perfume'], cologne: ['perfume'], scent: ['perfume'],
+    bag: ['bags', 'handbag', 'tote', 'backpack', 'crossbody'], purse: ['bag', 'handbag'], handbag: ['bag'],
+    gown: ['dress', 'dresses'], suit: ['blazer']
+  };
+
+  // Gender words narrow results instead of having to appear in the term:
+  // "women shoes" keeps unisex shoes and drops men-only categories.
+  const GENDER = { men: 'men', man: 'men', mens: 'men', male: 'men', guy: 'men', guys: 'men',
+    women: 'women', woman: 'women', womens: 'women', lady: 'women', ladies: 'women', female: 'women' };
+
+  function stem(w) {
+    if (w.length <= 3) return w;
+    if (/(ss|us)$/.test(w)) return w;
+    if (/(ses|xes|ches|shes)$/.test(w)) return w.slice(0, -2);
+    if (w.endsWith('s')) return w.slice(0, -1);
+    return w;
+  }
+
+  function words(s) {
+    const lower = String(s).toLowerCase().replace(/[’']/g, '');
+    const out = lower.split(/[^a-z0-9]+/).filter(Boolean);
+    // keep hyphenated words joined too, so "t-shirt" is findable as "tshirt"
+    (lower.match(/[a-z0-9]+(?:-[a-z0-9]+)+/g) || []).forEach(h => out.push(h.replace(/-/g, '')));
+    return out;
+  }
+
+  // whole words only: "ring-spun" stays "ringspun"
+  function wholeWords(s) {
+    return String(s).toLowerCase().replace(/[’'-]/g, '').split(/[^a-z0-9]+/).filter(Boolean);
+  }
+
+  function parseQuery(q) {
+    const raw = String(q).toLowerCase().replace(/[’']/g, '').replace(/-/g, '').split(/[^a-z0-9]+/).filter(Boolean);
+    let gender = null;
+    let tokens = raw.filter(w => {
+      if (GENDER[w]) { gender = GENDER[w]; return false; }
+      return !STOPWORDS.has(w);
+    });
+    if (tokens.length === 0 && !gender) tokens = raw;
+    return {
+      gender: gender,
+      tokens: tokens.map(w => {
+        const s = stem(w);
+        const syn = (SYNONYMS[w] || []).concat(SYNONYMS[s] || []);
+        const exactOnly = syn.includes('=' + s);
+        return Array.from(new Set((exactOnly ? [] : [w, s]).concat(syn))).map(a => a[0] === '=' ? a : stem(a));
+      })
+    };
+  }
+
+  function matches(row, parsed) {
+    if (parsed.gender && row._audience !== 'universal' && row._audience !== parsed.gender) return false;
+    return parsed.tokens.every(alts => alts.some(a => a[0] === '='
+      ? row._whole.includes(a.slice(1))
+      : row._words.some(h => h.startsWith(a))));
+  }
+
+  // ---------- STATE ----------
   let favorites = [];
   try { favorites = JSON.parse(localStorage.getItem(FAV_KEY) || '[]'); } catch (e) { favorites = []; }
-
-  let currentAudience = 'all';
-  try { currentAudience = localStorage.getItem(AUDIENCE_KEY) || 'all'; } catch (e) { currentAudience = 'all'; }
-
-  let activeCollectionFilter = null;
+  let activeFilter = 'all';   // 'all' | 'saved' | collection name
   let searchQuery = '';
 
   function saveFavorites() { try { localStorage.setItem(FAV_KEY, JSON.stringify(favorites)); } catch (e) {} }
-  function saveAudience() { try { localStorage.setItem(AUDIENCE_KEY, currentAudience); } catch (e) {} }
 
   function escapeHtml(s) {
-    return String(s).replace(/[&<>"']/g, c => ({
-      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-    }[c]));
+    return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
 
-  function createChip(text, tag) {
-    const chip = document.createElement('div');
-    chip.className = 'chip';
-    chip.dataset.text = text;
+  // ---------- ROWS ----------
+  function createRow(text, tag, opts) {
+    opts = opts || {};
+    const row = document.createElement('div');
+    row.className = 'row';
+    row.dataset.text = text;
 
-    const favBtn = document.createElement('button');
-    favBtn.className = 'chip-fav' + (favorites.includes(text) ? ' on' : '');
-    favBtn.setAttribute('aria-label', 'Save favorite');
-    favBtn.innerHTML = HEART_SVG;
-    favBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleFavorite(text);
-    });
-
-    const info = document.createElement('div');
-    info.className = 'chip-info';
-    info.innerHTML = '<span class="chip-text">' + escapeHtml(text) + '</span><span class="chip-tag">' + escapeHtml(tag) + '</span>';
-
-    const actions = document.createElement('div');
-    actions.className = 'chip-actions';
-
-    const copyBtn = document.createElement('button');
-    copyBtn.className = 'chip-btn chip-copy-btn';
-    copyBtn.setAttribute('aria-label', 'Copy ' + text);
-    copyBtn.textContent = 'Copy';
-    copyBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      copyChip(text);
-    });
-
-    const shopBtn = document.createElement('a');
-    shopBtn.className = 'chip-btn chip-shop-btn';
-    shopBtn.href = buildTemuUrl(text);
-    shopBtn.target = '_blank';
-    shopBtn.rel = 'noopener nofollow sponsored';
-    shopBtn.setAttribute('aria-label', 'Shop on Temu for ' + text);
-    shopBtn.innerHTML = 'Shop ' + SHOP_SVG;
-    shopBtn.addEventListener('click', () => {
-      trackEvent('chip-shop/' + slugify(text), text);
-    });
-
-    actions.appendChild(copyBtn);
-    actions.appendChild(shopBtn);
-
-    chip.appendChild(favBtn);
-    chip.appendChild(info);
-    chip.appendChild(actions);
-    return chip;
-  }
-
-  function createTrendingCard(text, tag, rank) {
-    const card = document.createElement('div');
-    card.className = 'trending-card';
-    card.dataset.text = text;
-
-    const rankEl = document.createElement('div');
-    rankEl.className = 'trending-rank';
-    rankEl.textContent = '#' + rank;
-
-    const info = document.createElement('div');
-    info.className = 'trending-info';
-    info.innerHTML = '<span class="trending-text">' + escapeHtml(text) + '</span><span class="trending-tag">' + escapeHtml(tag) + '</span>';
-
-    const actions = document.createElement('div');
-    actions.className = 'trending-actions';
-
-    const copyBtn = document.createElement('button');
-    copyBtn.className = 'chip-btn chip-copy-btn';
-    copyBtn.setAttribute('aria-label', 'Copy ' + text);
-    copyBtn.textContent = 'Copy';
-    copyBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      copyChip(text);
-    });
-
-    const shopBtn = document.createElement('a');
-    shopBtn.className = 'chip-btn chip-shop-btn';
-    shopBtn.href = buildTemuUrl(text);
-    shopBtn.target = '_blank';
-    shopBtn.rel = 'noopener nofollow sponsored';
-    shopBtn.setAttribute('aria-label', 'Shop on Temu for ' + text);
-    shopBtn.innerHTML = 'Shop ' + SHOP_SVG;
-    shopBtn.addEventListener('click', () => {
-      trackEvent('chip-shop/' + slugify(text), text);
-      trackEvent('trending-shop/' + slugify(text), 'Trending: ' + text);
-    });
-
-    actions.appendChild(copyBtn);
-    actions.appendChild(shopBtn);
-
-    card.appendChild(rankEl);
-    card.appendChild(info);
-    card.appendChild(actions);
-    return card;
-  }
-
-  function toggleFavorite(text) {
-    const idx = favorites.indexOf(text);
-    let action;
-    if (idx >= 0) {
-      favorites.splice(idx, 1);
-      action = 'removed';
-    } else {
-      favorites.unshift(text);
-      action = 'added';
-      trackEvent('fav-add/' + slugify(text), text);
+    if (opts.rank) {
+      const rank = document.createElement('span');
+      rank.className = 'rank';
+      rank.textContent = opts.rank;
+      row.appendChild(rank);
     }
-    saveFavorites();
-    renderFavorites();
-    updateHeartsForText(text, action === 'added');
-    showToast(action === 'added' ? '♥  Saved to favorites' : 'Removed from favorites');
-  }
 
-  function updateHeartsForText(text, animate) {
-    const isFav = favorites.includes(text);
-    document.querySelectorAll('.chip').forEach(chip => {
-      if (chip.dataset.text === text) {
-        const heart = chip.querySelector('.chip-fav');
-        if (heart) {
-          heart.classList.toggle('on', isFav);
-          if (animate && isFav) {
-            heart.classList.remove('just-favorited');
-            void heart.offsetWidth; // force reflow to restart animation
-            heart.classList.add('just-favorited');
-            setTimeout(() => heart.classList.remove('just-favorited'), 500);
-          }
-        }
-      }
+    const info = document.createElement('div');
+    info.className = 'row-text';
+    info.innerHTML = '<div class="term">' + escapeHtml(text) + '</div>' + (tag ? '<div class="tag">' + escapeHtml(tag) + '</div>' : '');
+    row.appendChild(info);
+
+    const fav = document.createElement('button');
+    fav.className = 'icon-btn fav' + (favorites.includes(text) ? ' on' : '');
+    fav.setAttribute('aria-label', 'Save ' + text);
+    fav.setAttribute('aria-pressed', String(favorites.includes(text)));
+    fav.innerHTML = ICONS.heart;
+    fav.addEventListener('click', () => toggleFavorite(text));
+    row.appendChild(fav);
+
+    const copy = document.createElement('button');
+    copy.className = 'icon-btn copy';
+    copy.setAttribute('aria-label', 'Copy ' + text);
+    copy.innerHTML = ICONS.copy;
+    copy.addEventListener('click', () => copyChip(text));
+    row.appendChild(copy);
+
+    const shop = document.createElement('a');
+    shop.className = 'shop';
+    shop.href = buildTemuUrl(text);
+    shop.target = '_blank';
+    shop.rel = 'noopener nofollow sponsored';
+    shop.setAttribute('aria-label', 'Shop on Temu for ' + text);
+    shop.innerHTML = 'Shop ' + ICONS.arrow;
+    shop.addEventListener('click', () => {
+      trackEvent('chip-shop/' + slugify(text), text);
+      if (opts.rank) trackEvent('trending-shop/' + slugify(text), 'Trending: ' + text);
     });
+    row.appendChild(shop);
+
+    return row;
   }
 
   function renderTrending() {
     const list = document.getElementById('trendingList');
     list.innerHTML = '';
-    MOST_SEARCHED.forEach((item, idx) => {
-      list.appendChild(createTrendingCard(item.text, item.tag, idx + 1));
-    });
+    MOST_SEARCHED.forEach((item, i) => list.appendChild(createRow(item.text, item.tag, { rank: i + 1 })));
   }
 
-  function renderTiles() {
-    const grid = document.getElementById('tilesGrid');
-    grid.innerHTML = '';
-    COLLECTIONS.forEach(col => {
-      const count = DATA.filter(c => c.collection === col.name)
-        .reduce((sum, cat) => sum + cat.chips.length, 0);
-      const tile = document.createElement('button');
-      tile.className = 'tile';
-      tile.dataset.collection = col.name;
-      tile.innerHTML = '<span class="tile-emoji">' + col.emoji + '</span><span class="tile-label">' + escapeHtml(col.name) + '</span><span class="tile-count">' + count + '</span>';
-      tile.addEventListener('click', () => setCollectionFilter(col.name));
-      grid.appendChild(tile);
+  function renderPills() {
+    const nav = document.getElementById('pills');
+    nav.innerHTML = '';
+    const items = [{ key: 'all', label: 'All' }]
+      .concat(COLLECTIONS.map(c => ({ key: c.name, label: c.name })))
+      .concat([{ key: 'saved', label: 'Saved' }]);
+    items.forEach(it => {
+      const b = document.createElement('button');
+      b.className = 'pill';
+      b.dataset.key = it.key;
+      b.innerHTML = escapeHtml(it.label) + (it.key === 'saved' ? '<span class="n" id="savedCount"></span>' : '');
+      b.addEventListener('click', () => setFilter(it.key));
+      nav.appendChild(b);
     });
+    updatePills();
   }
 
-  function updateTileUI() {
-    document.querySelectorAll('.tile').forEach(tile => {
-      tile.classList.toggle('active', tile.dataset.collection === activeCollectionFilter);
+  function updatePills() {
+    document.querySelectorAll('.pill').forEach(p => {
+      const on = p.dataset.key === activeFilter;
+      p.classList.toggle('active', on);
+      p.setAttribute('aria-pressed', String(on));
+      if (p.dataset.key === 'saved') p.hidden = favorites.length === 0 && activeFilter !== 'saved';
     });
-  }
-
-  function setCollectionFilter(collection) {
-    if (activeCollectionFilter === collection) {
-      activeCollectionFilter = null;
-    } else {
-      activeCollectionFilter = collection;
-      trackEvent('tile/' + slugify(collection), 'Tile: ' + collection);
-    }
-    updateTileUI();
-    applyFilters();
-  }
-
-  function renderFavorites() {
-    const section = document.getElementById('favorites');
-    const list = document.getElementById('favList');
-    const count = document.getElementById('favCount');
-    list.innerHTML = '';
-
-    if (favorites.length === 0) {
-      section.classList.remove('has-items');
-      count.textContent = '';
-      return;
-    }
-
-    section.classList.add('has-items');
-    count.textContent = String(favorites.length).padStart(2, '0');
-
-    favorites.forEach(text => {
-      let tag = '';
-      for (const cat of DATA) {
-        const found = cat.chips.find(c => c.text === text);
-        if (found) { tag = found.tag; break; }
-      }
-      list.appendChild(createChip(text, tag));
-    });
+    const n = document.getElementById('savedCount');
+    if (n) n.textContent = favorites.length ? String(favorites.length) : '';
   }
 
   function renderCategories() {
     const content = document.getElementById('content');
     content.innerHTML = '';
-
     COLLECTIONS.forEach(col => {
-      const catsInCollection = DATA.filter(c => c.collection === col.name);
-      if (catsInCollection.length === 0) return;
-
-      const header = document.createElement('div');
-      header.className = 'collection-header';
-      header.dataset.collection = col.name;
-      header.innerHTML = '<span class="collection-name">' + col.emoji + ' &nbsp;' + escapeHtml(col.name) + '</span><span class="collection-rule"></span>';
-      content.appendChild(header);
-
-      catsInCollection.forEach(cat => {
+      DATA.filter(c => c.collection === col.name).forEach(cat => {
         const section = document.createElement('section');
-        section.className = 'category';
-        section.dataset.name = cat.name.toLowerCase();
-        section.dataset.num = cat.num;
-        section.dataset.audience = cat.audience;
+        section.className = 'group';
         section.dataset.collection = col.name;
 
+        const gendered = cat.audience === 'men' || cat.audience === 'women';
         const head = document.createElement('div');
-        head.className = 'cat-head';
-        const audienceBadge = (cat.audience === 'men' || cat.audience === 'women')
-          ? `<span class="cat-audience">${cat.audience}</span>`
-          : '';
-        head.innerHTML = '<span class="cat-num">' + cat.num + '</span><span class="cat-name">' + escapeHtml(cat.name) + '</span>' + audienceBadge + '<span class="cat-count">' + String(cat.chips.length).padStart(2, '0') + '</span>';
+        head.className = 'group-head';
+        head.innerHTML = '<h2>' + escapeHtml(cat.name) + '</h2>' +
+          (gendered ? '<span class="badge">' + cat.audience + '</span>' : '') +
+          '<span class="count"></span>';
         section.appendChild(head);
 
         const note = document.createElement('p');
-        note.className = 'cat-note';
+        note.className = 'note';
         note.textContent = cat.note;
         section.appendChild(note);
 
         if (cat.sizingTip) {
-          const tip = document.createElement('div');
-          tip.className = 'cat-sizing-tip';
-          tip.innerHTML = '<div class="tip-inner"><span class="tip-label">Sizing tip</span>' + cat.sizingTip + '</div>';
+          const tip = document.createElement('p');
+          tip.className = 'tip';
+          tip.innerHTML = cat.sizingTip;
           section.appendChild(tip);
         }
 
-        const chipsWrap = document.createElement('div');
-        chipsWrap.className = 'chips';
+        const rows = document.createElement('div');
+        rows.className = 'rows';
+        const catWords = words(cat.name + ' ' + col.name + (gendered ? ' ' + cat.audience : ''));
         cat.chips.forEach(chip => {
-          chipsWrap.appendChild(createChip(chip.text, chip.tag));
+          const row = createRow(chip.text, chip.tag);
+          row._words = words(chip.text + ' ' + chip.tag).concat(catWords);
+          row._whole = wholeWords(chip.text + ' ' + chip.tag + ' ' + cat.name);
+          row._audience = gendered ? cat.audience
+            : row._words.includes('women') ? 'women' : row._words.includes('men') ? 'men' : 'universal';
+          rows.appendChild(row);
         });
-        section.appendChild(chipsWrap);
-
+        section.appendChild(rows);
         content.appendChild(section);
       });
     });
   }
 
-  function isAudienceHidden(catAudience) {
-    if (currentAudience === 'all') return false;
-    if (currentAudience === 'men' && catAudience === 'women') return true;
-    if (currentAudience === 'women' && catAudience === 'men') return true;
-    return false;
-  }
-
-  function isCollectionHidden(catCollection) {
-    if (!activeCollectionFilter) return false;
-    return catCollection !== activeCollectionFilter;
-  }
-
-  function updateAudienceUI() {
-    document.querySelectorAll('.aud-btn').forEach(btn => {
-      const isActive = btn.dataset.audience === currentAudience;
-      btn.classList.toggle('active', isActive);
-      btn.setAttribute('aria-pressed', String(isActive));
-    });
-  }
-
-  function updateCollectionHeaderVisibility() {
-    document.querySelectorAll('.collection-header').forEach(header => {
-      const collectionName = header.dataset.collection;
-      const cats = document.querySelectorAll('.category[data-collection="' + collectionName + '"]');
-      let anyVisible = false;
-      cats.forEach(cat => {
-        if (cat.dataset.hidden !== 'true') anyVisible = true;
-      });
-      header.dataset.empty = anyVisible ? 'false' : 'true';
-    });
-  }
-
+  // ---------- FILTERING ----------
   function applyFilters() {
-    const q = searchQuery.trim().toLowerCase();
-    let anyContentMatch = false;
-    let anyFavMatch = false;
+    const q = searchQuery.trim();
+    const parsed = q ? parseQuery(q) : null;
+    let total = 0;
 
-    // Collapse trending section when actively searching — smooth animation
-    const trendingSection = document.getElementById('trendingSection');
-    if (trendingSection) trendingSection.classList.toggle('collapsed', q !== '');
-
-    document.querySelectorAll('#content .category').forEach(cat => {
-      const catAudience = cat.dataset.audience || 'universal';
-      const catCollection = cat.dataset.collection || '';
-      const wasHidden = cat.dataset.hidden === 'true';
-
-      if (isAudienceHidden(catAudience) || isCollectionHidden(catCollection)) {
-        cat.dataset.hidden = 'true';
-        return;
-      }
-
-      const catMatch = cat.dataset.name.includes(q);
-      let catHasVisible = false;
-
-      cat.querySelectorAll('.chip').forEach(chip => {
-        const match = q === '' || catMatch || chip.dataset.text.toLowerCase().includes(q);
-        chip.hidden = !match;
-        if (match) { catHasVisible = true; anyContentMatch = true; }
+    document.querySelectorAll('#content .group').forEach(section => {
+      const inCollection = activeFilter === 'all' || activeFilter === 'saved' || section.dataset.collection === activeFilter;
+      let visible = 0;
+      section.querySelectorAll('.row').forEach(row => {
+        const ok = inCollection &&
+          (activeFilter !== 'saved' || favorites.includes(row.dataset.text)) &&
+          (!parsed || matches(row, parsed));
+        row.hidden = !ok;
+        if (ok) visible++;
       });
-
-      const nowHidden = !catHasVisible;
-      cat.dataset.hidden = nowHidden;
-
-      // Play fade-in only when a category transitions from hidden to visible
-      if (wasHidden && !nowHidden) {
-        cat.classList.remove('just-revealed');
-        void cat.offsetWidth; // force reflow so animation replays
-        cat.classList.add('just-revealed');
-        setTimeout(() => cat.classList.remove('just-revealed'), 320);
-      }
+      section.hidden = visible === 0;
+      section.querySelector('.count').textContent = visible + (visible === 1 ? ' term' : ' terms');
+      total += visible;
     });
 
-    updateCollectionHeaderVisibility();
+    document.getElementById('trending').hidden = !!q || activeFilter !== 'all';
+    document.getElementById('clearBtn').classList.toggle('visible', !!q);
 
-    document.querySelectorAll('#favList .chip').forEach(chip => {
-      const match = q === '' || chip.dataset.text.toLowerCase().includes(q);
-      chip.hidden = !match;
-      if (match) anyFavMatch = true;
-    });
-
-    const favSection = document.getElementById('favorites');
-    if (favorites.length === 0 || q === '' || anyFavMatch) {
-      favSection.style.display = '';
-    } else {
-      favSection.style.display = 'none';
+    const empty = document.getElementById('emptyState');
+    if (total === 0) {
+      const label = q ? '“' + escapeHtml(q) + '”' : 'this filter';
+      empty.innerHTML = '<p>No curated terms for ' + label + ' yet.</p>' +
+        '<p>Try a fabric or item: cotton, leather, hoodie, chain.</p>' +
+        (q ? '<a class="shop" id="rawShop" target="_blank" rel="noopener nofollow sponsored" href="' + buildTemuUrl(q) + '">Search Temu for ' + label + ' ' + ICONS.arrow + '</a>' : '') +
+        '<div class="suggest">' + ['hoodie', 'chain', 'kids', 'office shoes', 'perfume'].map(s => '<button class="pill" data-suggest="' + s + '">' + s + '</button>').join('') + '</div>';
+      const raw = document.getElementById('rawShop');
+      if (raw) raw.addEventListener('click', () => trackEvent('raw-shop/' + slugify(q), 'Raw search: ' + q));
+      empty.querySelectorAll('[data-suggest]').forEach(b => b.addEventListener('click', () => {
+        activeFilter = 'all';
+        updatePills();
+        setSearchQuery(b.dataset.suggest);
+      }));
     }
-
-    const showEmpty = (q !== '' || activeCollectionFilter) && !anyContentMatch && !anyFavMatch;
-    document.getElementById('emptyState').classList.toggle('visible', showEmpty);
+    empty.classList.toggle('visible', total === 0);
   }
 
-  function setAudience(mode) {
-    currentAudience = mode;
-    saveAudience();
-    updateAudienceUI();
+  function setFilter(key) {
+    activeFilter = (activeFilter === key && key !== 'all') ? 'all' : key;
+    if (activeFilter === 'saved') trackEvent('saved-filter', 'Saved filter');
+    else if (activeFilter !== 'all') trackEvent('tile/' + slugify(activeFilter), 'Tile: ' + activeFilter);
+    updatePills();
     applyFilters();
-    trackEvent('audience/' + mode, 'Audience: ' + mode);
   }
 
   function setSearchQuery(q) {
     searchQuery = q;
-    const main = document.getElementById('mainSearch');
-    if (main.value !== q) main.value = q;
+    const input = document.getElementById('mainSearch');
+    if (input.value !== q) input.value = q;
     applyFilters();
   }
 
-  const toast = document.getElementById('toast');
-  const toastText = document.getElementById('toastText');
-  let toastTimer;
+  // ---------- FAVORITES ----------
+  function toggleFavorite(text) {
+    const idx = favorites.indexOf(text);
+    const added = idx < 0;
+    if (added) {
+      favorites.unshift(text);
+      trackEvent('fav-add/' + slugify(text), text);
+    } else {
+      favorites.splice(idx, 1);
+    }
+    saveFavorites();
+    document.querySelectorAll('.row').forEach(row => {
+      if (row.dataset.text !== text) return;
+      const fav = row.querySelector('.fav');
+      fav.classList.toggle('on', added);
+      fav.setAttribute('aria-pressed', String(added));
+      if (added) {
+        fav.classList.remove('pop');
+        void fav.offsetWidth; // restart animation
+        fav.classList.add('pop');
+      }
+    });
+    updatePills();
+    if (activeFilter === 'saved') applyFilters();
+    showToast(added ? 'Saved' : 'Removed from saved');
+  }
 
+  // ---------- COPY ----------
+  const toast = document.getElementById('toast');
+  let toastTimer;
   function showToast(message) {
-    toastText.textContent = message;
+    toast.textContent = message;
     toast.classList.add('visible');
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => toast.classList.remove('visible'), 1600);
   }
 
-  function copyChip(text) {
-    const doCopy = navigator.clipboard && navigator.clipboard.writeText
-      ? navigator.clipboard.writeText(text)
-      : new Promise((resolve, reject) => {
-          const ta = document.createElement('textarea');
-          ta.value = text;
-          ta.style.position = 'fixed';
-          ta.style.opacity = '0';
-          document.body.appendChild(ta);
-          ta.select();
-          try { document.execCommand('copy'); resolve(); }
-          catch (e) { reject(e); }
-          document.body.removeChild(ta);
-        });
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(text);
+    return new Promise((resolve, reject) => {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); resolve(); } catch (e) { reject(e); }
+      document.body.removeChild(ta);
+    });
+  }
 
-    doCopy.then(() => {
-      document.querySelectorAll('.chip, .trending-card').forEach(c => {
-        if (c.dataset.text === text) c.classList.add('copied');
+  function copyChip(text) {
+    copyText(text).then(() => {
+      document.querySelectorAll('.row').forEach(row => {
+        if (row.dataset.text !== text) return;
+        row.classList.add('copied');
+        const btn = row.querySelector('.copy');
+        btn.classList.add('done');
+        btn.innerHTML = ICONS.check;
+        setTimeout(() => {
+          row.classList.remove('copied');
+          btn.classList.remove('done');
+          btn.innerHTML = ICONS.copy;
+        }, 1600);
       });
       showToast('Copied: ' + text);
       trackEvent('chip-copy/' + slugify(text), text);
-      setTimeout(() => {
-        document.querySelectorAll('.copied').forEach(c => c.classList.remove('copied'));
-      }, 1600);
-    }).catch(() => {
-      showToast('Copy failed. Long-press to select.');
-    });
+    }).catch(() => showToast('Copy failed. Long-press to select.'));
   }
 
-  // SIZING GUIDE
-  const sizingGuide = document.getElementById('sizingGuide');
-  const sizingToggle = document.getElementById('sizingToggle');
-  let sizingExpanded = false;
-  try { sizingExpanded = localStorage.getItem(SIZING_KEY) === '1'; } catch (e) {}
-  if (sizingExpanded) sizingGuide.classList.add('expanded');
-  sizingToggle.setAttribute('aria-expanded', String(sizingExpanded));
-  sizingToggle.addEventListener('click', () => {
-    sizingExpanded = !sizingExpanded;
-    sizingGuide.classList.toggle('expanded', sizingExpanded);
-    sizingToggle.setAttribute('aria-expanded', String(sizingExpanded));
-    try { localStorage.setItem(SIZING_KEY, sizingExpanded ? '1' : '0'); } catch (e) {}
-    trackEvent('sizing-guide/' + (sizingExpanded ? 'expand' : 'collapse'), 'Sizing guide toggled');
-  });
-
-  // SEARCH INPUT
-  document.getElementById('mainSearch').addEventListener('input', (e) => setSearchQuery(e.target.value));
-
-  // AUDIENCE BUTTONS
-  document.querySelectorAll('.aud-btn').forEach(btn => {
-    btn.addEventListener('click', () => setAudience(btn.dataset.audience));
-  });
-
-  // COUPON COPY
   const couponCopyBtn = document.getElementById('couponCopyBtn');
-  if (couponCopyBtn) {
-    couponCopyBtn.addEventListener('click', () => {
-      const code = 'ald753977';
-      const doCopy = navigator.clipboard && navigator.clipboard.writeText
-        ? navigator.clipboard.writeText(code)
-        : new Promise((resolve, reject) => {
-            const ta = document.createElement('textarea');
-            ta.value = code;
-            ta.style.position = 'fixed';
-            ta.style.opacity = '0';
-            document.body.appendChild(ta);
-            ta.select();
-            try { document.execCommand('copy'); resolve(); }
-            catch (e) { reject(e); }
-            document.body.removeChild(ta);
-          });
+  couponCopyBtn.addEventListener('click', () => {
+    const code = 'ald753977';
+    copyText(code).then(() => {
+      couponCopyBtn.classList.add('copied');
+      couponCopyBtn.textContent = 'Copied ✓';
+      showToast('Code copied: ' + code);
+      trackEvent('coupon-copy', 'Coupon code copied');
+      setTimeout(() => {
+        couponCopyBtn.classList.remove('copied');
+        couponCopyBtn.textContent = 'Copy code';
+      }, 2000);
+    }).catch(() => showToast('Copy failed'));
+  });
 
-      doCopy.then(() => {
-        couponCopyBtn.classList.add('copied');
-        couponCopyBtn.textContent = 'Copied ✓';
-        showToast('Code copied: ald753977');
-        trackEvent('coupon-copy', 'Coupon code copied');
-        setTimeout(() => {
-          couponCopyBtn.classList.remove('copied');
-          couponCopyBtn.textContent = 'Copy code';
-        }, 2000);
-      }).catch(() => {
-        showToast('Copy failed');
-      });
-    });
-  }
+  // ---------- SIZING GUIDE ----------
+  const sizingGuide = document.getElementById('sizingGuide');
+  try { if (localStorage.getItem(SIZING_KEY) === '1') sizingGuide.open = true; } catch (e) {}
+  sizingGuide.addEventListener('toggle', () => {
+    try { localStorage.setItem(SIZING_KEY, sizingGuide.open ? '1' : '0'); } catch (e) {}
+    trackEvent('sizing-guide/' + (sizingGuide.open ? 'expand' : 'collapse'), 'Sizing guide toggled');
+  });
+  document.getElementById('guideLink').addEventListener('click', () => { sizingGuide.open = true; });
 
-  // INIT
+  // ---------- INPUT ----------
+  const mainSearch = document.getElementById('mainSearch');
+  mainSearch.addEventListener('input', e => setSearchQuery(e.target.value));
+  document.getElementById('clearBtn').addEventListener('click', () => { setSearchQuery(''); mainSearch.focus(); });
+
+  // ---------- INIT ----------
+  renderPills();
   renderTrending();
-  renderTiles();
   renderCategories();
-  renderFavorites();
-  updateAudienceUI();
-  updateTileUI();
   applyFilters();
 </script>
 
